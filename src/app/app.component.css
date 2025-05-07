@@ -1,0 +1,21 @@
+.card{
+    background-color: rgb(220, 220, 220);
+    border: solid 1px black;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 25%;
+}
+.card input{
+    width: 50%;
+    margin: 0.5rem 0;
+}
+.card button{
+    width: 25%;
+    margin: 0.5rem 0;
+}
+.card label{
+    align-self: start;
+    padding-left: 1rem;
+}

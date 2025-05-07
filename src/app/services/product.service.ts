@@ -29,6 +29,15 @@ export class ProductService {
       headers: this.headers,
     });
   }
+  updateProduct(_id: string, _rev: string, product: any): Observable<any> {
+    return this.http.put<any>(
+      `http://localhost:5984/products/${_id}?rev=${_rev}`,
+      product,
+      {
+        headers: this.headers,
+      }
+    );
+  }
   deleteProduct(_id: string, _rev: string): Observable<any> {
     return this.http.delete<any>(
       `http://localhost:5984/products/${_id}?rev=${_rev}`,

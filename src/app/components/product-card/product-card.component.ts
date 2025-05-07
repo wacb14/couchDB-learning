@@ -9,8 +9,13 @@ import { Product } from '../../models/Product';
 })
 export class ProductCardComponent {
   deleter = output();
+  editor = output();
+
   product = input.required<Product>();
   delete(data: any) {
     this.deleter.emit(data);
+  }
+  edit(data: any) {
+    this.editor.emit(data);
   }
 }

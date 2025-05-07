@@ -1,29 +1,33 @@
-<h1>New product</h1>
-<form [formGroup]="productForm" (ngSubmit)="addProduct()">
-  <input
-    type="text"
-    name="name"
-    placeholder="name"
-    formControlName="name"
-  /><br />
+<h1>{{ editMode ? "Edit" : "New" }} product</h1>
+<form [formGroup]="productForm" (ngSubmit)="saveProduct()" class="card">
+  <label for="">Name</label>
+  <input type="text" name="name" placeholder="name" formControlName="name" />
+  <label for="">Price</label>
   <input
     type="number"
     name="price"
     placeholder="price"
     formControlName="price"
-  /><br />
+  />
+  <label for="">Description</label>
   <input
     type="text"
     name="description"
     placeholder="description"
     formControlName="description"
   />
-  <br />
-  <button type="button" type="submit">Add Product</button>
+  <button type="button" type="submit">
+    {{ editMode ? "Edit" : "Add" }} Product
+  </button>
+  <button type="reset" (click)="cleanForm()">Cancel</button>
 </form>
 
 <hr />
 <h1>Products List</h1>
 @for (product of products; track product._id) {
-<app-product-card [product]="product" (deleter)="deleteProduct($event)"></app-product-card>
+<app-product-card
+  [product]="product"
+  (deleter)="deleteProduct($event)"
+  (editor)="loadForm($event)"
+></app-product-card>
 }
