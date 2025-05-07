@@ -13,11 +13,10 @@ export class ProductService {
     'Content-Type': 'application/json',
   });
 
-  getById(id:string): Observable<any> {
-    return this.http.get<any>(
-      `http://localhost:5984/products/${id}`,
-      { headers: this.headers }
-    );
+  getById(_id: string): Observable<any> {
+    return this.http.get<any>(`http://localhost:5984/products/${_id}`, {
+      headers: this.headers,
+    });
   }
   getProducts(): Observable<any> {
     return this.http.get<any>(
@@ -26,9 +25,13 @@ export class ProductService {
     );
   }
   addProduct(product: any): Observable<any> {
-    return this.http.post<any>(
-      'http://localhost:5984/products/',
-      product,
+    return this.http.post<any>('http://localhost:5984/products/', product, {
+      headers: this.headers,
+    });
+  }
+  deleteProduct(_id: string, _rev: string): Observable<any> {
+    return this.http.delete<any>(
+      `http://localhost:5984/products/${_id}?rev=${_rev}`,
       { headers: this.headers }
     );
   }

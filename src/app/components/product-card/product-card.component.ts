@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, EventEmitter, input, output, Output } from '@angular/core';
 import { Product } from '../../models/Product';
 
 @Component({
@@ -8,5 +8,9 @@ import { Product } from '../../models/Product';
   styleUrl: './product-card.component.css',
 })
 export class ProductCardComponent {
+  deleter = output();
   product = input.required<Product>();
+  delete(data: any) {
+    this.deleter.emit(data);
+  }
 }

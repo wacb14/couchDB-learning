@@ -24,6 +24,6 @@
 
 <hr />
 <h1>Products List</h1>
-@for (product of products; track product.id) {
-<app-product-card [product]="product"></app-product-card>
+@for (product of products; track product._id) {
+<app-product-card [product]="product" (deleter)="deleteProduct($event)"></app-product-card>
 }
